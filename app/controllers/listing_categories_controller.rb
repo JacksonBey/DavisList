@@ -1,4 +1,5 @@
 class ListingCategoriesController < ApplicationController
+    
     def index
         @listing_categories = ListingCategory.all
     end
@@ -6,5 +7,7 @@ class ListingCategoriesController < ApplicationController
     def show
         @listing_category = ListingCategory.find(params[:id])
     end
+
+    private
 
 end

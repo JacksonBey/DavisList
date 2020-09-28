@@ -1,2 +1,6 @@
 <h1>Welcome to DavisList</h1><br>
 <h2>Please Select An Area</h2>
+
+<% @areas.each do |area| %>
+    <li><%= link_to area.name, area_path(area) %></li><br>
+<% end %>

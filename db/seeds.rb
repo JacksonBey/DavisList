@@ -16,6 +16,8 @@ u1 = User.create(name: "Davis", bio: "I like to sell things.", area_id: a1.id)
 u2 = User.create(name: "Jackson", bio: "I like to comment things.", area_id: a1.id)
 
 lc1 = ListingCategory.create(name: "Jobs", area_id: a1.id)
+lc2 = ListingCategory.create(name: "Construction", area_id: a1.id)
+lc3 = ListingCategory.create(name: "Outdoors", area_id: a1.id)
 
 l1 = Listing.create(title: "Cool Guy Shirt", description: "Cool Guy Stuff", price: "17.99", listing_category_id: lc1.id, user_id: u1.id)
 

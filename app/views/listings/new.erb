@@ -1,0 +1,8 @@
+<%= form_for @listing do |f|%>
+    <%= f.label :title%>
+    <%= f.text_field :title%>
+    <%= f.label :description%>
+    <%= f.text_area :description%>
+    <%= f.collection_check_boxes :listing_category_id, ListingCategory.all, :id, :name %>
+    <%= f.submit%>
+    <%end %>
