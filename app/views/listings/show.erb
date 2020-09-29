@@ -1,2 +1,13 @@
-<h1><%= @listing.title %></h1>
-<p><%= @listing.description %></p>
+<h1><%= @listing.title %></h1><br>
+<h3>Posted By: <%= link_to @listing.user.name, @listing.user %></h3><br>
+<p>Description: <%= @listing.description %></p>
+<p> Category:<%= @listing.listing_categories %></p>
+
+<% @comments.each do |comment| %>
+    <p><%= comment.user.name %> has this to say:</p><br>
+    <p><%= comment.content %></p>
+<% end %>
+
+<% if @listing.user == self %>
+<%= link_to "Remove Listing", destroy_listing_path(@listing) %>
+<% end %>

@@ -6,6 +6,7 @@ class ListingsController < ApplicationController
 
     def show
         @listing = Listing.find(params[:id])
+        @comments = @listing.comments
     end
 
     def new
@@ -13,13 +14,13 @@ class ListingsController < ApplicationController
     end
 
     def create
-        @listing.create = Listing(listing_params)
+        @listing = Listing.create(listing_params)
         redirect_to @listing
     end
 
     private
 
     def listing_params
-        params.permit(:listing).require(:title, :description, :price, :area_id, :user_id, :listing_category_ids =>[])
+        params.require(:listing).permit(:title, :description, :price, :area_id, :user_id, :listing_category_id)
     end
 end
