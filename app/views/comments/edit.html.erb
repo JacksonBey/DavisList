@@ -1,2 +1,9 @@
-<% render "form" %>
+<% render 'form' %>
+
+<% if flash[:errors] %>
+        <% flash[:errors].each do |error|%>
+        <p style="color:red" > <%= error %> </p>
+    <% end %>
+<% end %>
+
 <%= link_to "Delete Comment", destroy_comment_path %>

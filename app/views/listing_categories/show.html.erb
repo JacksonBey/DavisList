@@ -1,0 +1,9 @@
+<h1>Listings for <%=@listing_category.name %> in the <%= @listing_category.area_name %> Region</h1><br>
+
+<% @listing_category.order_listings.each do |listing| %>
+    <p><%= listing.listing_post_date %><%= link_to " #{listing.title}", listing %> <p><br>
+
+    <%end%>
+
+    <%= link_to "Home. Temp button", areas_path %>
+    <%= link_to "Make a New Listing", new_listing_path%>

@@ -3,6 +3,9 @@ class User < ApplicationRecord
   has_many :listings
   has_many :comments
 
+  validates :name, presence: true
+  validates :bio, length: { in: 30..500 }
+
   def all_comments
     self.comments.all.each do |comment|
       puts "#{comment.content}"
@@ -14,11 +17,6 @@ class User < ApplicationRecord
       puts "#{listing.title}:"
       puts "#{listing.description}"
       puts "#{listing.price}"
-    end
-  end
-
-  def all_categories
-    self.listings.all.each do |listing|
     end
   end
 

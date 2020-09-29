@@ -8,6 +8,4 @@ class ListingCategoriesController < ApplicationController
         @listing_category = ListingCategory.find(params[:id])
     end
 
-    private
-
 end
