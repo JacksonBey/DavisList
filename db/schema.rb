@@ -25,8 +25,6 @@ ActiveRecord::Schema.define(version: 2020_09_28_182628) do
     t.integer "listing_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["listing_id"], name: "index_comments_on_listing_id"
-    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "listing_categories", force: :cascade do |t|
@@ -34,7 +32,6 @@ ActiveRecord::Schema.define(version: 2020_09_28_182628) do
     t.integer "area_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["area_id"], name: "index_listing_categories_on_area_id"
   end
 
   create_table "listings", force: :cascade do |t|
@@ -45,8 +42,6 @@ ActiveRecord::Schema.define(version: 2020_09_28_182628) do
     t.integer "listing_category_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["listing_category_id"], name: "index_listings_on_listing_category_id"
-    t.index ["user_id"], name: "index_listings_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -55,13 +50,6 @@ ActiveRecord::Schema.define(version: 2020_09_28_182628) do
     t.integer "area_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["area_id"], name: "index_users_on_area_id"
   end
 
-  add_foreign_key "comments", "listings"
-  add_foreign_key "comments", "users"
-  add_foreign_key "listing_categories", "areas"
-  add_foreign_key "listings", "listing_categories"
-  add_foreign_key "listings", "users"
-  add_foreign_key "users", "areas"
 end
