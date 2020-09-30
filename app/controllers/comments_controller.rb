@@ -1,12 +1,13 @@
 class CommentsController < ApplicationController
 
     before_action :get_comment, only: [:show, :edit, :update, :destroy]
+    skip_before_action :fetch_user, only: [:show]
+    skip_before_action :save_my_previous_url
 
     def show
     end
 
     def new
-        fetch_user
         @comment = Comment.new
     end
 
@@ -21,7 +22,6 @@ class CommentsController < ApplicationController
     end
 
     def edit
-        fetch_user
         if sessions[:user_id] == @comment.user.id
             redirect_to edit_comment_path(@comment)
         else

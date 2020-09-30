@@ -5,7 +5,7 @@ class User < ApplicationRecord
 
   validates :name, presence: true
   validates_uniqueness_of :name
-  validates :bio, length: { in: 30..500 }
+  validates :bio, length: { in: 10..500 }
   has_secure_password
 
   def all_comments

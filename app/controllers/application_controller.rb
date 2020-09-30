@@ -2,7 +2,9 @@ class ApplicationController < ActionController::Base
     
     before_action :fetch_user
     before_action :save_my_previous_url
-    
+    helper_method :fetch_user
+    helper_method :logged_in?
+
     def logged_in?
         !!session[:user_id]
     end
@@ -12,7 +14,7 @@ class ApplicationController < ActionController::Base
         if @logged_in
             @user = User.find(session[:user_id])
         else
-            new_login_path
+            redirect_to new_login_path
         end
     end
 
@@ -21,7 +23,12 @@ class ApplicationController < ActionController::Base
     end
 
     def save_my_previous_url
-        session[:my_previous_url] = URI(request.referer || '').path
+        #session[:my_previous_url] = URI(request.referer || '').path
+        session[:my_previous_url] = URI(request.original_url).path
+        # byebug
+        # if session[:my_previous_url] == "/login/new"
+        #     session[:my_previous_url] = "area/index"
+        # end
     end
 
 end

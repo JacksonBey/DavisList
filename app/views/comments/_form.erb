@@ -1,6 +1,6 @@
 <%= form_for @comment do |f| %>
     <%= f.label :content %>
     <%= f.text_field :content %>
-    <%= f.submit %>
     <%= f.hidden_field :listing_id, value: @comment.listing.id %>
+    <%= f.submit %>
 <% end %>

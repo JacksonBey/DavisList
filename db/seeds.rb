@@ -15,9 +15,9 @@ a3 = Area.create(name: "Central District", zip_code: 98144)
 a4 = Area.create(name: "Bainbridge", zip_code: 98168)
 a5 = Area.create(name: "Bellingham", zip_code: 98122)
 
-u1 = User.create(name: "Davis", bio: "I like to sell things.", area_id: a1.id)
-u2 = User.create(name: "Jackson", bio: "I like to comment things.", area_id: a1.id)
-u3 = User.create(name: "Billy", bio: "Taxi Manager", area_id: a2.id)
+u1 = User.create(name: "Davis", bio: "I like to sell things.I like to sell things.", password: "123", area_id: a1.id)
+u2 = User.create(name: "Jackson", bio: "I like to comment things.I like to comment things.",  password: "123",area_id: a1.id)
+u3 = User.create(name: "Billy", bio: "Taxi ManagerTaxi ManagerTaxi ManagerTaxi Manager",  password: "123",area_id: a2.id)
 
 lc1 = ListingCategory.create(name: "Jobs", area_id: a1.id)
 lc2 = ListingCategory.create(name: "Construction", area_id: a1.id)

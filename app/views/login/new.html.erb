@@ -12,3 +12,10 @@
   </ul>
   <%= submit_tag "Log in" %>
 <% end %>
+
+
+<% if flash[:errors] %>
+    <p style="color:red" > <%= flash[:errors]%> </p>
+<% end %>
+
+<button><%= link_to "Home. Temp button", areas_path %></button>

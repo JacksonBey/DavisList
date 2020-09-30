@@ -1,5 +1,7 @@
 class ListingsController < ApplicationController
+
     skip_before_action :save_my_previous_url, only: [:new, :edit, :create, :update]
+    skip_before_action :fetch_user, only: [:index, :show]
 
     def index
         @listings = Listing.all
@@ -9,6 +11,9 @@ class ListingsController < ApplicationController
         @listing = Listing.find(params[:id])
         @comments = @listing.comments
         @comment = Comment.new
+        if logged_in?
+            @user = User.find(session[:user_id])
+        end
     end
 
     def new
@@ -16,7 +21,6 @@ class ListingsController < ApplicationController
     end
 
     def create
-        fetch_user
         @listing = Listing.create(listing_params)
         if @listing.valid?
             redirect_to @listing
@@ -27,7 +31,6 @@ class ListingsController < ApplicationController
     end
 
     def edit
-        fetch_user
         if sessions[:user_id] == @listing.user.id
             redirect_to edit_listing_path(@listing)
         else
