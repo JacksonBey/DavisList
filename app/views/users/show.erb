@@ -1,8 +1,8 @@
 <h1><%= @user.name %></h1>
 <p>Bio: <%= @user.bio %></p>
 <p>Posts:<% @user.listings.each do |listing| %></p>
-    <%= link_to listing.title, listing %> </br>
+    <%= link_to listing.title, listing %> <br>
     <% end %>
-</br>
+<br>
 <button><%= link_to "Create a new listing?" , new_listing_path %></button>
 <%= link_to "Home. Temp button", areas_path %>

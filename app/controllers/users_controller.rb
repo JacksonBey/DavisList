@@ -1,11 +1,14 @@
 class UsersController < ApplicationController
+
+    skip_before_action :save_my_previous_url, only: [:new, :create]
+
     def new
         @user = User.new
     end
 
     def create
         @user = User.create(user_params)
-        redirect_to @user
+        redirect_to session[:my_previous_url]
     end
 
     def show
@@ -15,7 +18,7 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        params.require(:user).permit(:name, :bio, :area_id)  
+        params.require(:user).permit(:name, :password, :bio, :area_id)  
     end
 
 end

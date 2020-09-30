@@ -1,6 +1,7 @@
 class AreasController < ApplicationController
 
     def index
+        session[:page] = "/index"
         @areas = Area.all
     end
 

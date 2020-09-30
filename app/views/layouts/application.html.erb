@@ -8,8 +8,17 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+  <body>  
 
-  <body>
+   <% if @logged_in %>
+    Logged in as: <%= @user.name %>
+    <%= button_to "Log out", log_out_path, method: :delete %>
+    <%else%>
+    <%= link_to "Log in", new_login_path %>
+    <%= link_to "Sign up", new_user_path %>
+  <%end%>
+
     <%= yield %>
+    </main>
   </body>
 </html>

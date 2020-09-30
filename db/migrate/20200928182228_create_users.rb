@@ -3,6 +3,7 @@ class CreateUsers < ActiveRecord::Migration[6.0]
     create_table :users do |t|
       t.string :name
       t.text :bio
+      t.text :password_digest
       t.integer :area_id, null: false, foreign_key: true
 
       t.timestamps

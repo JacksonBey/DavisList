@@ -1,0 +1,17 @@
+<%= form_for @listing do |f|%>
+    <%= f.label :title%>
+    <%= f.text_field :title%><br>
+    <%= f.label :description%>
+    <%= f.text_area :description%><br>
+    <%= f.label :price%>
+    <%= f.text_field :price%><br>
+    <%= f.collection_select :listing_category_id, ListingCategory.all, :id, :name %><br>
+    <p>Select a User. Temp method, will be automatic with user log in<%= f.collection_select :user_id, User.all, :id, :name %></p>
+    <%= f.submit%>
+    <%end %>
+
+<% if flash[:errors] %>
+    <% flash[:errors].each do |error|%>
+    <p style="color:red" > <%= error %> </p>
+<% end %>
+<% end %>

@@ -6,6 +6,7 @@ class CommentsController < ApplicationController
     end
 
     def new
+        fetch_user
         @comment = Comment.new
     end
 
@@ -20,6 +21,12 @@ class CommentsController < ApplicationController
     end
 
     def edit
+        fetch_user
+        if sessions[:user_id] == @comment.user.id
+            redirect_to edit_comment_path(@comment)
+        else
+            redirect_to new_login_path
+        end
     end
 
     def update

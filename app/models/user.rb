@@ -4,7 +4,9 @@ class User < ApplicationRecord
   has_many :comments
 
   validates :name, presence: true
+  validates_uniqueness_of :name
   validates :bio, length: { in: 30..500 }
+  has_secure_password
 
   def all_comments
     self.comments.all.each do |comment|
@@ -13,11 +15,7 @@ class User < ApplicationRecord
   end
 
   def all_listings
-    self.listings.all.each do |listing|
-      puts "#{listing.title}:"
-      puts "#{listing.description}"
-      puts "#{listing.price}"
-    end
+    self.listings.all
   end
 
 end

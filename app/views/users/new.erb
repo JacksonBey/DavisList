@@ -1,8 +1,10 @@
 <%= form_for @user do |f|%>
     <%= f.label :name%>
-    <%= f.text_field :name%>
+    <%= f.text_field :name%><br>
     <%= f.label :bio%>
-    <%= f.text_area :bio%>
-    <%= f.collection_select :area_id, Area.all, :id, :name %>
+    <%= f.text_area :bio%><br>
+    <%= f.label :password %>
+    <%= f.password_field :password %><br>
+    <%= f.collection_select :area_id, Area.all, :id, :name %><br>
     <%= f.submit%>
     <%end %>
