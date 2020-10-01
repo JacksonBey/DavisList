@@ -1,14 +1,27 @@
+<li>
 <%= form_for @user do |f|%>
+    <li>
     <%= f.label :name%>
     <%= f.text_field :name%><br>
+    </li>
+    <li>
     <%= f.label :bio%>
     <%= f.text_area :bio%><br>
+    </li>
+    <li>
     <%= f.label :password %>
     <%= f.password_field :password %><br>
+    </li>
+    <li>
     <%= f.label :confirm_password %>
     <%= f.password_field :password2 %><br>
+    </li>
+    <li>
     <%= f.collection_select :area_id, Area.all, :id, :name %><br>
+    </li>
+    <li>
     <%= f.submit%>
+    </li>
     <%end %>
 
     <% if flash[:errors] %>

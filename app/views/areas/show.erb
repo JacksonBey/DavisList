@@ -1,7 +1,7 @@
-<h1> Region: <%= @area.name %></h1>
-<h3> Zip Code: <%= @area.zip_code %></h3>
-<p> Categories: <% @area.listing_categories.each do |listing_category| %></p>
-    <%= link_to listing_category.name, listing_category %>
-    <%end%>
-
-    <br> <%= link_to "Home. Temp button", areas_path %>
+<h1 class="region"> Region: <%= @area.name %></h1>
+<h3 class="zip_code"> Zip Code: <%= @area.zip_code %></h3>
+<p class="category"> Categories: <% @area.listing_categories.each do |listing_category| %></p>
+    <li class="categories">
+    <%= link_to listing_category.name, listing_category %> <p class= "small"> Listings: <%= listing_category.listing_amount %></p>
+    </li>
+<%end%>

@@ -5,20 +5,18 @@
 <p>Price/Pay Rate: <%= @listing.price %></p><br>
 
 <% @comments.each do |comment| %>
+        <li>
         <p><%= comment.user.name %> has this to say:</p>
         <p><%= comment.content %></p>
         <%if session[:user_id] == comment.user.id %>
     <%= link_to "Edit Comment", edit_comment_path(comment) %><br>
+        </li>
         <% end %>
     <%end%>
 
 <% if session[:user_id] == @listing.user_id %>
-<%= link_to "Remove Listing", delete_listing_path(@listing), method: :delete %>
+<button class="logged_in"><%= link_to "Remove Listing", delete_listing_path(@listing), method: :delete %></button>
 <% end %>
-
-<button><%= link_to "Home. Temp button", areas_path(@listing.listing_category.area) %></button>
-
-
 
 <h3> Create a new comment? </h3>
 <% if flash[:errors] %>
