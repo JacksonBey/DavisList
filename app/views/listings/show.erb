@@ -1,42 +1,50 @@
+<div class="page">
 <h1><%= @listing.title %></h1><br>
 <h3>Posted By: <%= link_to @listing.user.name, user_path(@listing.user) %></h3><br>
 <p>Description: <%= @listing.description %></p>
 <p>Category:<%= @listing.listing_category.name %></p>
 <p>Price/Pay Rate: <%= @listing.price %></p><br>
+<p>Posted on: <%= @listing.listing_post_date %></p><br>
 
+<%if session[:user_id] == @listing.user_id %>
+<p class= "small"><%= link_to "Edit post", edit_listing_path(@listing) %></p>  
+<%end%>
+
+<% if session[:user_id] == @listing.user_id %>
+<p class= "small"><%= link_to "Remove Listing", delete_listing_path(@listing), method: :delete %></p>
+<% end %>
+
+<ul>
 <% @comments.each do |comment| %>
         <li>
-        <p><%= comment.user.name %> has this to say:</p>
-        <p><%= comment.content %></p>
+        <p class= "small"><%= link_to comment.user.name, user_path(comment.user)%><%=" said on #{comment.comment_post_date}"%></p>
+        <p><%= comment.content %> </p>
         <%if session[:user_id] == comment.user.id %>
-    <%= link_to "Edit Comment", edit_comment_path(comment) %><br>
+    <p class="small"><%= link_to "Edit Comment", edit_comment_path(comment) %></p>
         </li>
         <% end %>
     <%end%>
+</ul>
 
-<% if session[:user_id] == @listing.user_id %>
-<button class="logged_in"><%= link_to "Remove Listing", delete_listing_path(@listing), method: :delete %></button>
-<% end %>
 
 <h3> Create a new comment? </h3>
 <% if flash[:errors] %>
         <% flash[:errors].each do |error|%>
         <p style="color:red" > <%= error %> </p>
-<% end %>
+    <% end %>
 <% end %>
 
-<%if session[:user_id] == @listing.user_id %>
-<button><%= link_to "Edit post", edit_listing_path(@listing) %></button>   
-<%end%>
+
 
 <%if logged_in? %>
 <% @user = User.find(session[:user_id]) %>
-<%= form_for @comment do |f| %><br>
+<div class= "box"><%= form_for @comment do |f| %><br>
 <%= f.text_area :content %><br>
     <%= f.hidden_field :listing_id, value: @listing.id %>
     <%= f.hidden_field :user_id, value: @user.id %>
     <%= f.submit %>
-<% end %>
+<% end %> </div>
 <% else %>
     <p>Log In to Make a Comment</p>
 <% end %>
+</div>

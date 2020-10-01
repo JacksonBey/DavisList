@@ -1,12 +1,12 @@
-
-<%= form_for @listing do |f|%>
+<div class="page">
+<%= form_for @new_listing do |f|%>
     <%= f.label :title%>
     <%= f.text_field :title%><br>
     <%= f.label :description%>
     <%= f.text_area :description%><br>
     <%= f.label :price%>
     <%= f.text_field :price%><br>
-    <%= f.collection_select :listing_category_id, ListingCategory.all, :id, :name %><br>
+    <%= f.collection_select :listing_category_id, @user.user_area_cats , :id, :name %><br>
     <%= f.hidden_field :user_id, value: @user.id %>
     <%= f.submit%>
 <%end %>
@@ -17,3 +17,4 @@
     <p style="color:red" > <%= error %> </p>
     <% end %>
 <% end %>
+<div>

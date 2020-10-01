@@ -15,7 +15,11 @@ class User < ApplicationRecord
   end
 
   def all_listings
-    self.listings.all
+    self.listings.each
+  end
+
+  def user_area_cats
+    self.area.listing_categories
   end
 
 end

@@ -1,10 +1,10 @@
+<div class="page">
 <h1>Listings for <%=@listing_category.name %> in the <%= @listing_category.area_name %> Region</h1><br>
-
+<ul>
 <% @listing_category.order_listings.each do |listing| %>
     <li>
     <p><%= listing.listing_post_date %><%= link_to " #{listing.title}", listing %> <p><br>
     </li>
     <%end%>
-
-    <%= link_to "Home. Temp button", areas_path %>
-    <%= link_to "Make a New Listing", new_listing_path%>
+</ul>
+</div>

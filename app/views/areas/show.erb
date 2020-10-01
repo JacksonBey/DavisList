@@ -1,7 +1,10 @@
+<div class="page">
 <h1 class="region"> Region: <%= @area.name %></h1>
 <h3 class="zip_code"> Zip Code: <%= @area.zip_code %></h3>
-<p class="category"> Categories: <% @area.listing_categories.each do |listing_category| %></p>
+ <p> Categories: <% @area.listing_categories.each do |listing_category| %>
     <li class="categories">
-    <%= link_to listing_category.name, listing_category %> <p class= "small"> Listings: <%= listing_category.listing_amount %></p>
+    <%= link_to listing_category.name, listing_category %> <p class= "small"> Listings: <%= listing_category.listing_amount %>
     </li>
 <%end%>
+</div>
+
