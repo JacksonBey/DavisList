@@ -25,10 +25,6 @@ class ApplicationController < ActionController::Base
     def save_my_previous_url
         #session[:my_previous_url] = URI(request.referer || '').path
         session[:my_previous_url] = URI(request.original_url).path
-        # byebug
-        # if session[:my_previous_url] == "/login/new"
-        #     session[:my_previous_url] = "area/index"
-        # end
     end
 
 end

@@ -1,4 +1,16 @@
-<% render "form" %>
+<%= form_for @listing do |f|%>
+    <%= f.label :title%>
+    <%= f.text_field :title%><br>
+    <%= f.label :description%>
+    <%= f.text_area :description%><br>
+    <%= f.label :price%>
+    <%= f.text_field :price%><br>
+    <%= f.collection_select :listing_category_id, ListingCategory.all, :id, :name %><br>
+    <%= f.hidden_field :user_id, value: @user.id %>
+    <%= f.submit%>
+<%end %>
+
+<%= button_to "Delete listing", delete_listing_path(@listing), method: :delete %>
 
 <% if flash[:errors] %>
         <% flash[:errors].each do |error|%>

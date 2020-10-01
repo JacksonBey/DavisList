@@ -4,5 +4,9 @@
     <%= link_to listing.title, listing %> <br>
     <% end %>
 <br>
-<button><%= link_to "Create a new listing?" , new_listing_path %></button>
+
+<%if session[:user_id] == @user.id %>
+    <button><%= link_to "Create a new listing?" , new_listing_path %></button>
+    <button><%= link_to "Edit Bio" , edit_user_path %></button>
+<% end %>
 <%= link_to "Home. Temp button", areas_path %>

@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
 
-    before_action :get_comment, only: [:show, :edit, :update, :destroy]
+    before_action :get_comment, only: [:show, :edit, :update]
     skip_before_action :fetch_user, only: [:show]
     skip_before_action :save_my_previous_url
 
@@ -22,11 +22,7 @@ class CommentsController < ApplicationController
     end
 
     def edit
-        if sessions[:user_id] == @comment.user.id
-            redirect_to edit_comment_path(@comment)
-        else
-            redirect_to new_login_path
-        end
+
     end
 
     def update
@@ -40,9 +36,9 @@ class CommentsController < ApplicationController
     end
 
     def destroy
-        @path = @comment.listing_path
+        @comment = Comment.find(params[:format])
         @comment.destroy
-        redirect_to listing_path(@path)
+        redirect_to session[:my_previous_url]
     end
 
     private

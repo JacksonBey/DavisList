@@ -1,4 +1,9 @@
-<% render 'form' %>
+<%= form_for @comment do |f| %>
+    <%= f.label :content %>
+    <%= f.text_area :content %>
+    <%= f.hidden_field :listing_id, value: @comment.listing.id %>
+    <%= f.submit %>
+<% end %>
 
 <% if flash[:errors] %>
         <% flash[:errors].each do |error|%>
@@ -6,4 +11,4 @@
     <% end %>
 <% end %>
 
-<%= link_to "Delete Comment", destroy_comment_path %>
+<%= button_to "Delete Comment", delete_comment_path(@comment), method: :delete %>

@@ -1,18 +1,15 @@
 <%= form_for @user do |f|%>
-    <%= f.label :name%>
+    <%= f.label :edit_name%>
     <%= f.text_field :name%><br>
-    <%= f.label :bio%>
+    <%= f.label :edit_bio%>
     <%= f.text_area :bio%><br>
-    <%= f.label :password %>
-    <%= f.password_field :password %><br>
-    <%= f.label :confirm_password %>
-    <%= f.password_field :password2 %><br>
     <%= f.collection_select :area_id, Area.all, :id, :name %><br>
     <%= f.submit%>
-    <%end %>
+<%end %>
 
-    <% if flash[:errors] %>
+<% if flash[:errors] %>
     <% flash[:errors].each do |error|%>
     <p style="color:red" > <%= error %> </p>
     <% end %>
 <% end %>
+<%= link_to "Area Index", areas_path %>

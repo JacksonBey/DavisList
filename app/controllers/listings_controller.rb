@@ -31,21 +31,30 @@ class ListingsController < ApplicationController
     end
 
     def edit
-        if sessions[:user_id] == @listing.user.id
-            redirect_to edit_listing_path(@listing)
-        else
-            redirect_to new_login_path
-        end    
+        # if session[:user_id] == @listing.user.id
+        #     redirect_to edit_listing_path(@listing)
+        # else
+        #     redirect_to new_login_path
+        # end  
+        @listing = Listing.find(params[:id])  
     end
 
     def update
+        @listing = Listing.find(params[:id])  
         @listing.update(listing_params)
         if @listing.valid?
-            redirect_to listing_path(@listing.listing_path)
+            redirect_to @listing
         else
             flash[:errors] = @listing.errors.full_messages
             redirect_to edit_listing_path(@listing)
         end
+    end
+
+    def destroy
+        @listing = Listing.find(params[:format])
+        @category = @listing.listing_category
+        @listing.destroy
+        redirect_to @category
     end
 
     private

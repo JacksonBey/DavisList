@@ -5,12 +5,15 @@
 <p>Price/Pay Rate: <%= @listing.price %></p><br>
 
 <% @comments.each do |comment| %>
-    <p><%= comment.user.name %> has this to say:</p>
-    <p><%= comment.content %></p><br>
-<% end %>
+        <p><%= comment.user.name %> has this to say:</p>
+        <p><%= comment.content %></p>
+        <%if session[:user_id] == comment.user.id %>
+    <%= link_to "Edit Comment", edit_comment_path(comment) %><br>
+        <% end %>
+    <%end%>
 
-<% if @listing.user == self %>
-<%= link_to "Remove Listing", destroy_listing_path(@listing) %>
+<% if session[:user_id] == @listing.user_id %>
+<%= link_to "Remove Listing", delete_listing_path(@listing), method: :delete %>
 <% end %>
 
 <button><%= link_to "Home. Temp button", areas_path(@listing.listing_category.area) %></button>
@@ -24,12 +27,14 @@
 <% end %>
 <% end %>
 
+<%if session[:user_id] == @listing.user_id %>
+<button><%= link_to "Edit post", edit_listing_path(@listing) %></button>   
+<%end%>
+
 <%if logged_in? %>
 <% @user = User.find(session[:user_id]) %>
-<%= form_for @comment do |f| %>
-    <br>
-    <%= f.text_area :content %>
-    <br>
+<%= form_for @comment do |f| %><br>
+<%= f.text_area :content %><br>
     <%= f.hidden_field :listing_id, value: @listing.id %>
     <%= f.hidden_field :user_id, value: @user.id %>
     <%= f.submit %>
