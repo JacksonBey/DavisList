@@ -11,18 +11,32 @@
   </head>
   <header>
   <div class="navbar">
-    <h1 class="davis_list">DavisList</h1>
-  <% if logged_in? %>
+    <h1 class="davis_list">DavisList
+    <%if @listing != nil%>
+      <p class= "small"><%= link_to @listing.area_name, @listing.listing_area%> > <%= link_to @listing.cat_name, @listing.listing_category%> > <%= @listing.title%></p>
+    <% elsif @listing_category != nil%>
+      <p class= "small"><%= link_to @listing_category.area_name, @listing_category.area %> > <%= @listing_category.name %></p>
+    <% elsif @new_listing != nil%>
+    <p class= "small"> <%= link_to @user.area.name,  @user.area %> > New Listing </p> 
+    <% end %>
+    </h1>
+
+  <div class= "status_bar"><% if logged_in? %>
     Logged in as: <button class="logged_in"><%= link_to User.find_by(id: session[:user_id]).name, user_path(session[:user_id]) %></button>
     <button id="log_out"><%= link_to "Log out", log_out_path, method: :delete %></button>
+    <button class= "nlisting"><%= link_to "Make a New Listing", new_listing_path%></button>
   <%else%>
   <button class="sign_up"><%= link_to "Sign up", new_user_path %></button>
   <button class="log_in"><%= link_to "Log in", new_login_path %></button>
  
   <%end%>
-  <button class="home"> <%= link_to "Select Area", areas_path %> </button>
+  <button class="home"> <%= link_to "Homepage", areas_path %> </button>
+  </div>
 </div>
+
+
   </header>
+
   <body>
 
     <%= yield %>

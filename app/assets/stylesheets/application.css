@@ -20,7 +20,6 @@
     color:solid black;
     margin: 0;
     background-color: #fcefe8;
-
   }
   
   .navbar {
@@ -32,51 +31,104 @@
     background-color: #ffbc99;
   }
 
+  .nlisting {
+    background-color: #ffbc99
+  }
+
   #log_out {
-    background-color: #ff9359;
+    background-color: #ffbc99;
     color:  #bbc9be;
-    float: right
+    float: right;
+    margin-right: 10px
   }
 
   .log_in {
-    background-color:#fa5700;
+    background-color: #ffbc99;
     color: #bbc9be;
     float: right
   }
 
   .logged_in {
-    background-color: #fa5700;
+    background-color: #ffbc99;
     color: #bbc9be
   }
 
   .sign_up {
-    background-color: #ff9359;
+    background-color: #ffbc99;
     color: #777;
     float: right
   }
 
   .davis_list {
-    
+    margin-left: 10px
   }
    
 li:nth-of-type(2n) {
-    background-color: #eb8c17;
+    background-color:#fae6dc;
    }
 
 li {
     padding: 12px;
     font-weight: bold;
-    background-color:#f5c69d;
+    background-color:#fad3b1;
     color: #3e3e3e;
-    margin-right: 16px
-   }
-   
-li:nth-of-type(2n) a {
-    color: #solid black;
-    background-color: solid black;
+    margin-top: -5px;
+    margin-bottom: -5px;
    }
 
 .small {
     font-weight: 500;
     font-size: 14px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0
+}
+
+button:hover {
+  background-color: #d7f9fa;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 3px 10px 0 rgba(0,0,0,0.19)
+}
+
+#log_out:hover {
+  background-color: #d7f9fa;
+  color: black;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 3px 10px 0 rgba(0,0,0,0.19)
+}
+
+a {
+  color: #9E2F61
+}
+
+a:hover {
+color: #CF2D76
+}
+
+input[type="submit"] {
+    background-color:  #ffbc99;
+    color: solid black;
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-bottom: 10px
+}
+
+input[type="submit"]:hover {
+  background-color: #d7f9fa;
+  color: black;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 3px 10px 0 rgba(0,0,0,0.19)
+}
+
+.box {
+margin-left: 10px;
+margin-right: 10px
+}
+
+.status_bar {
+  margin-left: 10px
+}
+
+.page {
+  margin-left: 10px;
+  margin-right: 10px
 }

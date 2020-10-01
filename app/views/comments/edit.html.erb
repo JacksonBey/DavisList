@@ -1,14 +1,14 @@
+<div class="page">
 <%= form_for @comment do |f| %>
-    <%= f.label :content %>
-    <%= f.text_area :content %>
+    <p class= "small"><%= f.label :content %></p>
+    <%= f.text_area :content %><br>
     <%= f.hidden_field :listing_id, value: @comment.listing.id %>
     <%= f.submit %>
-<% end %>
-
+<% end %> 
+<%= button_to "Delete Comment", delete_comment_path(@comment), method: :delete %>
 <% if flash[:errors] %>
         <% flash[:errors].each do |error|%>
         <p style="color:red" > <%= error %> </p>
     <% end %>
 <% end %>
-
-<%= button_to "Delete Comment", delete_comment_path(@comment), method: :delete %>
+</div>

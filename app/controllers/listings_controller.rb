@@ -17,7 +17,7 @@ class ListingsController < ApplicationController
     end
 
     def new
-        @listing = Listing.new
+        @new_listing = Listing.new
     end
 
     def create

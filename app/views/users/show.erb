@@ -1,12 +1,13 @@
+<div class= "page">
 <h1><%= @user.name %></h1>
 <p>Bio: <%= @user.bio %></p>
+
+<%if session[:user_id] == @user.id %>
+    <button><%= link_to "Edit Bio" , edit_user_path %></button>
+<% end %>
+
 <p>Posts:<% @user.listings.each do |listing| %></p>
     <%= link_to listing.title, listing %> <br>
     <% end %>
 <br>
-
-<%if session[:user_id] == @user.id %>
-    <button><%= link_to "Create a new listing?" , new_listing_path %></button>
-    <button><%= link_to "Edit Bio" , edit_user_path %></button>
-<% end %>
-<%= link_to "Home. Temp button", areas_path %>
+</div>
