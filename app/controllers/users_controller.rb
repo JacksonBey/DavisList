@@ -18,7 +18,7 @@ class UsersController < ApplicationController
                 redirect_to new_user_path
             end
         else
-            flash[:errors] = "Password must match"
+            flash[:errors] = ["Password must match"]
             redirect_to new_user_path
         end
     end
@@ -37,7 +37,7 @@ class UsersController < ApplicationController
                 redirect_to edit_user_path(@user)
             end
         else
-            flash[:errors] = "Password must match"
+            flash[:errors] = ["Password must match"]
             redirect_to edit_user_path
         end
     end
