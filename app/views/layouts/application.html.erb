@@ -18,6 +18,8 @@
       <p class= "small"><%= link_to @listing_category.area_name, @listing_category.area %> > <%= @listing_category.name %></p>
     <% elsif @new_listing != nil%>
     <p class= "small"> <%= link_to @user.area.name,  @user.area %> > New Listing </p> 
+    <%elsif @area != nil %>
+    <p class= "small"> <%= @area.name %></p> 
     <% end %>
     </h1>
 
